@@ -10,7 +10,8 @@ import Reports from './pages/Reports/';
 import Users from './pages/Users/';
 import Tasks from './pages/Tasks/';
 import App from './App';
-
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -26,12 +27,20 @@ const router = createBrowserRouter([
         element: <Reports />
       },
       {
-        path: "/users",
+        path: "users",
         element: <Users />
       },
       {
-        path: "/tasks",
+        path: "tasks",
         element: <Tasks />
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
+      {
+        path: "cadastro",
+        element: <Register />
       },
     ]
   },

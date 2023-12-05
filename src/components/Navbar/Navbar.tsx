@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useState } from "react";
-import styles from "./input.module.scss";
+import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface INavbar {
   menu?: [];
@@ -9,14 +9,14 @@ const Navbar: FC<INavbar> = () => {
   const [open, setOpen] = useState(true);
 
   const menus = [
-    { title: "Dashboard", icon: "dashboard", src: "settings" },
+    { title: "Dashboard", icon: "dashboard", src: "/" },
     { title: "Settings",  icon: "settings", src: "settings" },
 
-    { title: "Reports", icon: "reports", src: "settings", gap: true },
-    { title: "Tasks", icon: "task", src: "settings" },
-    { title: "Users", icon: "users", src: "settings" },
+    { title: "Reports", icon: "reports", src: "reports", gap: true },
+    { title: "Tasks", icon: "task", src: "tasks" },
+    { title: "Users", icon: "users", src: "users" },
     
-    { title: "Log out", icon: "logout", src: "settings", gap: true },
+    { title: "Log out", icon: "logout", src: "/", gap: true },
   ];
 
   return (
@@ -80,7 +80,8 @@ const Navbar: FC<INavbar> = () => {
                 className="w-6"
                 src={`../../src/assets/${menu.icon}.png`} alt="" 
               />
-              <span className={`${!open && 'hidden'} origin-left duration-200 font-semibold text-base`}> {menu.title} </span>
+              <Link to={menu.src}><span className={`${!open && 'hidden'} origin-left duration-200 font-semibold text-base`}> {menu.title} </span></Link>
+              
             </li>
           ))}
         </ul>
