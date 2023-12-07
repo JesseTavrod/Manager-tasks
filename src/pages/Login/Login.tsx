@@ -31,7 +31,6 @@ const Login = () => {
             label={"Email"}
             errorMessage={"Fill the field"}
             {...userInput}
-           
           />
 
           <Input
@@ -41,7 +40,6 @@ const Login = () => {
             errorMessage={"Preencha o campo"}
             {...emailInput}
           />
-
           <button className="font-semibold border-2 border-black px-14 py-3 hover:bg-violet-600" type="submit">Enviar</button>
         </form>
       </div>
