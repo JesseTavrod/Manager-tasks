@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useState } from "react";
-import styles from "./input.module.scss";
+import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface INavbar {
   menu?: [];
@@ -9,14 +9,14 @@ const Navbar: FC<INavbar> = () => {
   const [open, setOpen] = useState(true);
 
   const menus = [
-    { title: "Dashboard", src: "", icon: "" },
-    { title: "Settings", src: "", icon: "" },
+    { title: "Dashboard", icon: "dashboard", src: "/" },
+    { title: "Settings",  icon: "settings", src: "settings" },
 
-    { title: "Reports", src: "", icon: "" },
-    { title: "Tasks", src: "", icon: "" },
-    { title: "Users", src: "", icon: "" },
+    { title: "Reports", icon: "reports", src: "reports", gap: true },
+    { title: "Tasks", icon: "task", src: "tasks" },
+    { title: "Users", icon: "users", src: "users" },
     
-    { title: "Log out", src: "", icon: "" },
+    { title: "Log out", icon: "logout", src: "/", gap: true },
   ];
 
   return (
@@ -45,40 +45,43 @@ const Navbar: FC<INavbar> = () => {
         />
       </div>
 
-      <div
-        className={`
-          ${!open && "scale-0"}
-        `}
-      >
+      <div className="py-4 px-4">
         <div
           className="
-          flex flex-col
-          gap-y-4 items-center
+          flex 
+          items-center
+          gap-4 
+          h-20
           "
         >
           <img
             src="../../src/assets/user.jpg"
-            className="w-36 rounded-full mt-7 duration-500"
+            className="w-9 rounded-full duration-500"
           />
 
           <h2
-            className={`text-white origin-left font-medium text-xl duration-300`}
+            className={`text-white origin-left font-medium text-xl duration-300 ${!open && "scale-0"}`}
           >
-            Front End
+            Jessé Tavares
           </h2>
         </div>
 
-        <ul>
+        <ul className="pt-6">
           {menus.map((menu, index) => (
             <li
               key={`link${index}`}
               className={`
                   text-gray-300 text-sm flex items-center
                   gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md
+                  ${ menu.gap ? "mt-9" : "mt-4"}
                 `}
             >
-              <img src={`../../src/assets/${menu.src}.png`} alt="" />
-              <span> {menu.title} </span>
+              <img 
+                className="w-6"
+                src={`../../src/assets/${menu.icon}.png`} alt="" 
+              />
+              <Link to={menu.src}><span className={`${!open && 'hidden'} origin-left duration-200 font-semibold text-base`}> {menu.title} </span></Link>
+              
             </li>
           ))}
         </ul>

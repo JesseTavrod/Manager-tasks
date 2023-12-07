@@ -24,7 +24,7 @@ const Input: FC<Iinput> = ({
 }) => {
   return (
     <div className={styles.input_wrapper}>
-      <div className={styles.input_wrapper__box}>
+      <div className={`${styles.input_wrapper__box} mt-2` }>
         <label>{label}</label>
         <input
           type={type}
@@ -33,6 +33,8 @@ const Input: FC<Iinput> = ({
           placeholder={placeholder}
           onChange={onChange}
           disabled={disabled}
+          className="w-full rounded-sm border-2 p-2 mt-1"
+          
         />
       </div>
       {error && <p className="error"> { errorMessage } </p>}
